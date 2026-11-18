@@ -2,12 +2,15 @@
 
 /* Valori condivisi: le regole interessate li richiamano con var(). */
 :root {
-  --colore-primario: #234c78;
-  --colore-primario-scuro: #163454;
-  --colore-sfondo: #f5f2e9;
-  --colore-testo: #202923;
+  --colore-primario: #65e6cf;
+  --colore-primario-scuro: #36bba6;
+  --colore-sfondo: #111318;
+  --colore-testo: #f2f3ef;
+  --colore-superficie: #20242c;
+  --colore-bordo: #424954;
+  --colore-testo-secondario: #c1c9d2;
   --font-testo: Arial, Helvetica, sans-serif;
-  --font-titoli: 'Space Grotesk', sans-serif; /* Font aggiornato */
+  --font-titoli: 'Space Grotesk', sans-serif;
 }
 
 * {
@@ -44,6 +47,12 @@ a:focus {
 .site-header {
   padding: 1.25rem 0;
   border-bottom: 4px solid var(--colore-primario);
+  
+  /* Nuove regole per l'intestazione sticky */
+  position: sticky;
+  top: 0;
+  background-color: var(--colore-sfondo); 
+  z-index: 100;
 }
 
 .brand {
@@ -64,12 +73,22 @@ a:focus {
 
 nav {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column; /* In colonna sotto i 600px */
+  gap: 0.5rem;
 }
 
 nav a {
   display: inline-block;
-  margin-right: 1rem;
   padding: 0.25rem 0;
+}
+
+/* media query per la riga sopra i 600px */
+@media (min-width: 600px) {
+  nav {
+    flex-direction: row; /* In riga da 600px in su */
+    gap: 1.5rem;
+  }
 }
 
 
@@ -374,4 +393,45 @@ h3 {
   .map-container iframe {
     height: 350px;
   }
+}
+
+/* Superfici e dettagli della palette scura */
+.event-card,
+.venue-card,
+.luoghi-swiper figure {
+  background: var(--colore-superficie);
+  border-color: var(--colore-bordo);
+}
+
+.map-container {
+  border-color: var(--colore-bordo);
+}
+
+.site-footer {
+  border-top-color: var(--colore-bordo);
+  color: var(--colore-testo-secondario);
+}
+
+.eyebrow,
+.event-meta,
+.event-place {
+  color: var(--colore-testo-secondario);
+}
+
+.luoghi-swiper {
+  --swiper-navigation-color: var(--colore-primario);
+}
+
+.luoghi-swiper .swiper-button-prev,
+.luoghi-swiper .swiper-button-next {
+  background-color: var(--colore-superficie);
+}
+
+.skip-link {
+  background: var(--colore-superficie);
+  color: var(--colore-testo);
+}
+
+.button-link {
+  color: var(--colore-sfondo);
 }
